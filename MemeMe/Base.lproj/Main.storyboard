@@ -24,19 +24,22 @@
                                     <constraint firstAttribute="width" secondItem="Rsa-ui-hna" secondAttribute="height" multiplier="1:1" id="0Gq-On-Vtm"/>
                                 </constraints>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUH-I6-Efs">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUH-I6-Efs">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Sy8-58-CdB"/>
                                     <barButtonItem systemItem="camera" id="3As-w7-tra">
                                         <connections>
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="kYC-Jj-vrt"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EXL-DC-A6C"/>
                                     <barButtonItem tag="1" title="Album" id="sSP-hd-0xc">
                                         <connections>
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="yPB-zR-F61"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LJQ-iw-Ie7"/>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-k8-zWI" userLabel="Top textfield">
