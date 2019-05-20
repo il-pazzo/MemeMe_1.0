@@ -24,24 +24,6 @@
                                     <constraint firstAttribute="width" secondItem="Rsa-ui-hna" secondAttribute="height" multiplier="1:1" id="0Gq-On-Vtm"/>
                                 </constraints>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUH-I6-Efs">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Sy8-58-CdB"/>
-                                    <barButtonItem systemItem="camera" id="3As-w7-tra">
-                                        <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="kYC-Jj-vrt"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EXL-DC-A6C"/>
-                                    <barButtonItem tag="1" title="Album" id="sSP-hd-0xc">
-                                        <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="yPB-zR-F61"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LJQ-iw-Ie7"/>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-k8-zWI" userLabel="Top textfield">
                                 <rect key="frame" x="20" y="276" width="374" height="28"/>
                                 <nil key="textColor"/>
@@ -60,8 +42,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fTC-kg-h8r"/>
                                 </connections>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUH-I6-Efs">
+                                <rect key="frame" x="0.0" y="1300" width="0.0" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Sy8-58-CdB"/>
+                                    <barButtonItem systemItem="camera" id="3As-w7-tra">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="kYC-Jj-vrt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EXL-DC-A6C"/>
+                                    <barButtonItem tag="1" title="Album" id="sSP-hd-0xc">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="yPB-zR-F61"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LJQ-iw-Ie7"/>
+                                </items>
+                            </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1c-fz-rxk">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="526" width="0.0" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="cHJ-jE-udf">
                                         <connections>
@@ -76,19 +76,32 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To create a meme, start with taking or selecting a photo using the buttons below." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCV-P3-Xa9" userLabel="Instructions">
+                                <rect key="frame" x="20" y="438" width="374" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="Fu1-ac-KXm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZUH-I6-Efs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2l4-tv-FcS"/>
                             <constraint firstItem="7m6-Fh-4U6" firstAttribute="bottom" secondItem="Rsa-ui-hna" secondAttribute="bottom" constant="-10" id="2qj-Er-ApP"/>
                             <constraint firstItem="7m6-Fh-4U6" firstAttribute="leading" secondItem="Rsa-ui-hna" secondAttribute="leading" id="3H3-5y-acm"/>
+                            <constraint firstItem="7m6-Fh-4U6" firstAttribute="top" secondItem="jCV-P3-Xa9" secondAttribute="bottom" constant="77" id="4f1-m3-ohz"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4wV-Tg-mDs"/>
                             <constraint firstItem="sS6-k8-zWI" firstAttribute="leading" secondItem="Rsa-ui-hna" secondAttribute="leading" id="8Jb-C9-MQy"/>
                             <constraint firstItem="l1c-fz-rxk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bo2-uh-1LE"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="ZUH-I6-Efs" secondAttribute="top" constant="-20" id="GIV-zP-Alv"/>
+                            <constraint firstItem="jCV-P3-Xa9" firstAttribute="leading" secondItem="7m6-Fh-4U6" secondAttribute="leading" id="RN7-fw-pM0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rsa-ui-hna" secondAttribute="trailing" constant="20" id="TUx-He-km2"/>
                             <constraint firstItem="ZUH-I6-Efs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZjP-kb-fMA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZUH-I6-Efs" secondAttribute="trailing" id="bDG-CS-95B"/>
+                            <constraint firstItem="jCV-P3-Xa9" firstAttribute="trailing" secondItem="7m6-Fh-4U6" secondAttribute="trailing" id="elx-ia-AHV"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fIK-hv-Kai"/>
                             <constraint firstItem="l1c-fz-rxk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hek-fU-lP8"/>
                             <constraint firstItem="sS6-k8-zWI" firstAttribute="trailing" secondItem="Rsa-ui-hna" secondAttribute="trailing" id="k6u-S3-jBi"/>
@@ -104,6 +117,7 @@
                         <outlet property="bottomTextField" destination="7m6-Fh-4U6" id="YmX-v3-CU1"/>
                         <outlet property="cameraButton" destination="3As-w7-tra" id="IUA-V5-3rL"/>
                         <outlet property="imageView" destination="Rsa-ui-hna" id="NK9-gw-J0m"/>
+                        <outlet property="instructionsLabel" destination="jCV-P3-Xa9" id="KFi-Sf-YFh"/>
                         <outlet property="topBar" destination="l1c-fz-rxk" id="f5k-v8-TER"/>
                         <outlet property="topTextField" destination="sS6-k8-zWI" id="slj-NS-RIS"/>
                     </connections>

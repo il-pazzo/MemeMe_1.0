@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     @IBOutlet weak var activityButton: UIBarButtonItem!
 
@@ -32,6 +33,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var activeTextField: UITextField?
     let defaultTextTop = "Top"
     let defaultTextBottom = "Bottom"
+    
+    let textAlphaWhenShowing: CGFloat = 1.0
+    let textAlpheWhenEntering: CGFloat = 0.7
+    let textBackgroundColorWhenShowing = UIColor.clear
+    let textBackgroundColorWhenEntering = UIColor.lightGray
     
     
     // MARK: - View load/appear/etc.
@@ -82,10 +88,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if imageView.image == nil {
             topTextField.isHidden = true
             bottomTextField.isHidden = true
+            instructionsLabel.isHidden = false
         }
         else {
             topTextField.isHidden = false
             bottomTextField.isHidden = false
+            instructionsLabel.isHidden = true
         }
     }
     
@@ -138,23 +146,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (!completed) { return }
         
         print( "activity complete" )
-        let meme = Meme( topText: topTextField.text,
-                         bottomText: bottomTextField.text,
-                         originalImage: imageView.image,
-                         memedImage: getMemedImage() )
+//        let meme = Meme( topText: topTextField.text,
+//                         bottomText: bottomTextField.text,
+//                         originalImage: imageView.image,
+//                         memedImage: getMemedImage() )
 
     }
     
     private func getMemedImage() -> UIImage {
         
-//        showBarsOrNo( false )
+        showBarsOrNo( false )
         UIGraphicsBeginImageContext(self.view.frame.size)
         
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
-//        showBarsOrNo( true )
+        showBarsOrNo( true )
         
         return memedImage
     }
@@ -203,9 +211,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 bottomTextField?.text = ""
             }
         }
+
+        activeTextField?.backgroundColor = textBackgroundColorWhenEntering
+        activeTextField?.alpha = textAlpheWhenEntering
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        activeTextField?.backgroundColor = textBackgroundColorWhenShowing
+        activeTextField?.alpha = textAlphaWhenShowing
         
         activeTextField?.text = activeTextField?.text?.uppercased()
         activeTextField = nil
