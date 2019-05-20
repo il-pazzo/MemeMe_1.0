@@ -60,29 +60,51 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fTC-kg-h8r"/>
                                 </connections>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1c-fz-rxk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="cHJ-jE-udf">
+                                        <connections>
+                                            <action selector="showActivityViewController:" destination="BYZ-38-t0r" id="a2M-E3-FxI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VId-Ji-CnY"/>
+                                    <barButtonItem systemItem="cancel" id="mqa-hk-jmQ">
+                                        <connections>
+                                            <action selector="discardWorkInProgress:" destination="BYZ-38-t0r" id="2Is-id-DcO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZUH-I6-Efs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2l4-tv-FcS"/>
                             <constraint firstItem="7m6-Fh-4U6" firstAttribute="bottom" secondItem="Rsa-ui-hna" secondAttribute="bottom" constant="-10" id="2qj-Er-ApP"/>
                             <constraint firstItem="7m6-Fh-4U6" firstAttribute="leading" secondItem="Rsa-ui-hna" secondAttribute="leading" id="3H3-5y-acm"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4wV-Tg-mDs"/>
                             <constraint firstItem="sS6-k8-zWI" firstAttribute="leading" secondItem="Rsa-ui-hna" secondAttribute="leading" id="8Jb-C9-MQy"/>
+                            <constraint firstItem="l1c-fz-rxk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bo2-uh-1LE"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="ZUH-I6-Efs" secondAttribute="top" constant="-20" id="GIV-zP-Alv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rsa-ui-hna" secondAttribute="trailing" constant="20" id="TUx-He-km2"/>
                             <constraint firstItem="ZUH-I6-Efs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZjP-kb-fMA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZUH-I6-Efs" secondAttribute="trailing" id="bDG-CS-95B"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fIK-hv-Kai"/>
+                            <constraint firstItem="l1c-fz-rxk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hek-fU-lP8"/>
                             <constraint firstItem="sS6-k8-zWI" firstAttribute="trailing" secondItem="Rsa-ui-hna" secondAttribute="trailing" id="k6u-S3-jBi"/>
                             <constraint firstItem="7m6-Fh-4U6" firstAttribute="trailing" secondItem="Rsa-ui-hna" secondAttribute="trailing" id="kf0-CP-oij"/>
                             <constraint firstItem="Rsa-ui-hna" firstAttribute="top" secondItem="sS6-k8-zWI" secondAttribute="top" constant="-10" id="nsH-LX-RHg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l1c-fz-rxk" secondAttribute="trailing" id="wa8-0e-4Jx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityButton" destination="cHJ-jE-udf" id="iOp-X2-Dtt"/>
+                        <outlet property="bottomBar" destination="ZUH-I6-Efs" id="qTa-qq-mJu"/>
                         <outlet property="bottomTextField" destination="7m6-Fh-4U6" id="YmX-v3-CU1"/>
                         <outlet property="cameraButton" destination="3As-w7-tra" id="IUA-V5-3rL"/>
                         <outlet property="imageView" destination="Rsa-ui-hna" id="NK9-gw-J0m"/>
+                        <outlet property="topBar" destination="l1c-fz-rxk" id="f5k-v8-TER"/>
                         <outlet property="topTextField" destination="sS6-k8-zWI" id="slj-NS-RIS"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    @IBOutlet weak var activityButton: UIBarButtonItem!
+
+    @IBOutlet weak var topBar: UIToolbar!
+    @IBOutlet weak var bottomBar: UIToolbar!
+    
+    
     var activeTextField: UITextField?
     let defaultTextTop = "Top"
     let defaultTextBottom = "Bottom"
@@ -56,6 +62,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         updateMemeLabelsHidden()
+        updateActivityButtonEnabled()
+        
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
@@ -78,6 +86,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func updateActivityButtonEnabled() {
+     
+        activityButton.isEnabled = imageView.image != nil
+    }
+    
+    func showBarsOrNo( _ showBars: Bool ) {
+        
+        topBar.isHidden = !showBars
+        bottomBar.isHidden = !showBars
+    }
+    
     @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
         
         let pc = UIImagePickerController()
@@ -88,6 +107,52 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(pc, animated: true, completion: nil)
     }
     
+    @IBAction func discardWorkInProgress( _ sender: UIBarButtonItem ) {
+        
+        imageView.image = nil
+        activeTextField = nil
+        
+        updateMemeLabelsHidden()
+    }
+    
+    @IBAction func showActivityViewController( _ sender: UIButton ) {
+        
+        let image = getMemedImage()
+        
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        vc.completionWithItemsHandler = activitySharingComplete
+        
+        present( vc, animated: true, completion: nil )
+    }
+    
+    @objc func activitySharingComplete( activityType: UIActivity.ActivityType?,
+                                        completed: Bool,
+                                        _ returnedItems: [Any]?,
+                                        error: Error? ) {
+        if (!completed) { return }
+        
+        print( "activity complete" )
+        let meme = Meme( topText: topTextField.text,
+                         bottomText: bottomTextField.text,
+                         originalImage: imageView.image,
+                         memedImage: getMemedImage() )
+
+    }
+    
+    private func getMemedImage() -> UIImage {
+        
+//        showBarsOrNo( false )
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+//        showBarsOrNo( true )
+        
+        return memedImage
+    }
+    
     
     // MARK: - ImagePickerControllerDelegate methods
     
@@ -96,7 +161,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let selectedImage = info[.originalImage] as? UIImage {
             imageView.image = selectedImage
             updateMemeLabelsHidden()
+            topTextField.text = defaultTextTop
+            bottomTextField.text = defaultTextBottom
         }
+        
+        updateActivityButtonEnabled()
         dismiss(animated: true, completion: nil)
     }
     

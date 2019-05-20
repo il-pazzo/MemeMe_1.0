@@ -12,6 +12,7 @@
 		BB868DCA2290230B0060C5CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB868DC82290230B0060C5CE /* Main.storyboard */; };
 		BB868DCC2290230C0060C5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB868DCB2290230C0060C5CE /* Assets.xcassets */; };
 		BB868DCF2290230C0060C5CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB868DCD2290230C0060C5CE /* LaunchScreen.storyboard */; };
+		BBC1AC08229220C1003B6036 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1AC07229220C1003B6036 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BB868DCB2290230C0060C5CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB868DCE2290230C0060C5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB868DD02290230C0060C5CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBC1AC07229220C1003B6036 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				BB868DC42290230B0060C5CE /* AppDelegate.swift */,
 				BB868DC62290230B0060C5CE /* ViewController.swift */,
+				BBC1AC07229220C1003B6036 /* Meme.swift */,
 				BB868DC82290230B0060C5CE /* Main.storyboard */,
 				BB868DCB2290230C0060C5CE /* Assets.xcassets */,
 				BB868DCD2290230C0060C5CE /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC1AC08229220C1003B6036 /* Meme.swift in Sources */,
 				BB868DC72290230B0060C5CE /* ViewController.swift in Sources */,
 				BB868DC52290230B0060C5CE /* AppDelegate.swift in Sources */,
 			);
