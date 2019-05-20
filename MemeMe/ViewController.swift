@@ -14,6 +14,8 @@ enum ToolbarTags : Int {
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
@@ -25,13 +27,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topBar: UIToolbar!
     @IBOutlet weak var bottomBar: UIToolbar!
     
+    // MARK: - Properties
     
     var activeTextField: UITextField?
     let defaultTextTop = "Top"
     let defaultTextBottom = "Bottom"
     
     
-    // MARK: - view load/appear/etc.
+    // MARK: - View load/appear/etc.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +99,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topBar.isHidden = !showBars
         bottomBar.isHidden = !showBars
     }
+    
+    
+    // MARK: - Button actions
     
     @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
         
