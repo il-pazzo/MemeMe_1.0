@@ -24,7 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var instructionsLabel: UILabel!
     
     @IBOutlet weak var activityButton: UIBarButtonItem!
-
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     @IBOutlet weak var topBar: UIToolbar!
     @IBOutlet weak var bottomBar: UIToolbar!
     
@@ -71,7 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         updateMemeLabelsHidden()
-        updateActivityButtonEnabled()
+        updateTopBarButtons()
         
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -97,9 +98,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func updateActivityButtonEnabled() {
+    func updateTopBarButtons() {
      
         activityButton.isEnabled = imageView.image != nil
+        cancelButton.isEnabled = imageView.image != nil
     }
     
     func showBarsOrNo( _ showBars: Bool ) {
@@ -127,6 +129,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         activeTextField = nil
         
         updateMemeLabelsHidden()
+        updateTopBarButtons()
     }
     
     @IBAction func showActivityViewController( _ sender: UIButton ) {
@@ -179,7 +182,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             bottomTextField.text = defaultTextBottom
         }
         
-        updateActivityButtonEnabled()
+        updateTopBarButtons()
         dismiss(animated: true, completion: nil)
     }
     
