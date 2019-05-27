@@ -40,6 +40,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let textBackgroundColorWhenShowing = UIColor.clear
     let textBackgroundColorWhenEntering = UIColor.lightGray
     
+    var meme: Meme?
+    
     
     // MARK: - View load/appear/etc.
     
@@ -71,7 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateMemeLabelsHidden()
+        updateMemeBody()
         updateTopBarButtons()
         
         subscribeToKeyboardNotifications()
@@ -84,17 +86,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    func updateMemeLabelsHidden() {
+    func updateMemeBody() {
         
         if imageView.image == nil {
             topTextField.isHidden = true
             bottomTextField.isHidden = true
             instructionsLabel.isHidden = false
+            self.view.backgroundColor = UIColor.white
         }
         else {
             topTextField.isHidden = false
             bottomTextField.isHidden = false
             instructionsLabel.isHidden = true
+            self.view.backgroundColor = UIColor.black
         }
     }
     
@@ -141,16 +145,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     private func discardWorkInProgress() {
         
+        meme = nil
         imageView.image = nil
         activeTextField = nil
         
-        updateMemeLabelsHidden()
+        updateMemeBody()
         updateTopBarButtons()
     }
     
     @IBAction func showActivityViewController( _ sender: UIButton ) {
         
         let image = getMemedImage()
+        
+        meme = Meme(topText: topTextField.text,
+                    bottomText: bottomTextField.text,
+                    originalImage: imageView.image,
+                    memedImage: image)
         
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         vc.completionWithItemsHandler = activitySharingComplete
@@ -165,11 +175,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (!completed) { return }
         
         print( "activity complete" )
-//        let meme = Meme( topText: topTextField.text,
-//                         bottomText: bottomTextField.text,
-//                         originalImage: imageView.image,
-//                         memedImage: getMemedImage() )
-
     }
     
     private func getMemedImage() -> UIImage {
@@ -193,7 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if let selectedImage = info[.originalImage] as? UIImage {
             imageView.image = selectedImage
-            updateMemeLabelsHidden()
+            updateMemeBody()
             topTextField.text = defaultTextTop
             bottomTextField.text = defaultTextBottom
         }
