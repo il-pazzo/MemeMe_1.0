@@ -68,7 +68,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VId-Ji-CnY"/>
                                     <barButtonItem systemItem="cancel" id="mqa-hk-jmQ">
                                         <connections>
-                                            <action selector="discardWorkInProgress:" destination="BYZ-38-t0r" id="2Is-id-DcO"/>
+                                            <action selector="maybeDiscardWorkInProgress:" destination="BYZ-38-t0r" id="2Is-id-DcO"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

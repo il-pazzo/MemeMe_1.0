@@ -123,7 +123,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(pc, animated: true, completion: nil)
     }
     
-    @IBAction func discardWorkInProgress( _ sender: UIBarButtonItem ) {
+    @IBAction func maybeDiscardWorkInProgress( _ sender: UIBarButtonItem ) {
+        
+        let alert = UIAlertController(title: "Discard?",
+                                      message: "Are you sure you want to discard this meme-in-progress?",
+                                      preferredStyle: .alert)
+        
+        let discardAction = UIAlertAction(title: "Discard", style: .default) { _ in
+            self.discardWorkInProgress()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction( discardAction )
+        alert.addAction( cancelAction )
+        
+        present( alert, animated: true )
+    }
+    private func discardWorkInProgress() {
         
         imageView.image = nil
         activeTextField = nil
