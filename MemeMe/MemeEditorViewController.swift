@@ -12,7 +12,7 @@ enum ToolbarTags : Int {
     case camera = 0, album
 }
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let textBackgroundColorWhenEntering = UIColor.lightGray
     
     var meme: Meme?
+    var memedImage: UIImage?
     
     
     // MARK: - View load/appear/etc.
@@ -88,18 +89,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func updateMemeBody() {
         
-        if imageView.image == nil {
-            topTextField.isHidden = true
-            bottomTextField.isHidden = true
-            instructionsLabel.isHidden = false
-            self.view.backgroundColor = UIColor.white
-        }
-        else {
-            topTextField.isHidden = false
-            bottomTextField.isHidden = false
-            instructionsLabel.isHidden = true
-            self.view.backgroundColor = UIColor.black
-        }
+        let isHidden = imageView.image == nil
+        
+        topTextField.isHidden = isHidden
+        bottomTextField.isHidden = isHidden
+        instructionsLabel.isHidden = !isHidden
+        self.view.backgroundColor = isHidden ? UIColor.white : UIColor.black
     }
     
     func updateTopBarButtons() {
@@ -146,8 +141,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func discardWorkInProgress() {
         
         meme = nil
+        memedImage = nil
         imageView.image = nil
-        activeTextField = nil
+        
+        if activeTextField != nil {
+            activeTextField?.resignFirstResponder()
+            activeTextField = nil
+        }
         
         updateMemeBody()
         updateTopBarButtons()
@@ -155,14 +155,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func showActivityViewController( _ sender: UIButton ) {
         
-        let image = getMemedImage()
+        memedImage = getMemedImage()
         
-        meme = Meme(topText: topTextField.text,
-                    bottomText: bottomTextField.text,
-                    originalImage: imageView.image,
-                    memedImage: image)
-        
-        let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let vc = UIActivityViewController(activityItems: [memedImage!], applicationActivities: nil)
         vc.completionWithItemsHandler = activitySharingComplete
         
         present( vc, animated: true, completion: nil )
@@ -174,7 +169,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                         error: Error? ) {
         if (!completed) { return }
         
-        print( "activity complete" )
+        meme = Meme(topText: topTextField.text,
+                    bottomText: bottomTextField.text,
+                    originalImage: imageView.image,
+                    memedImage: memedImage)
     }
     
     private func getMemedImage() -> UIImage {
@@ -277,28 +275,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShowOrHide( _ notification: Notification ) {
-
-        guard let activeTextField = activeTextField else {
-            print( "No active text field?" )
-            return
-        }
         
+        // NOTE: This technique only works because:
+        // 1. We know the top text field will always be visible (so no action needed)
+        // 2. We know the bottom text field is very near the bottom bar, and will be
+        //    visible by shifting everything up the height of the keyboard...except
+        //    that don't need the bottom bar to be visible as well (since that looks
+        //    like hell).
+
         if notification.name == UIResponder.keyboardWillShowNotification {
-//            view.frame.origin.y = -getKeyboardHeight( notification )
-            let keyboardRect = getKeyboardRect( notification )
-            let delta = activeTextField.frame.origin.y + activeTextField.frame.height + 10.0 - keyboardRect.origin.y
-            view.frame.origin.y = (delta > 0.0) ? 0.0 - delta : 0.0
+            if bottomTextField.isEditing {
+                let keyboardHeight = getKeyboardHeight( notification )
+                view.frame.origin.y = 0.0 - keyboardHeight + bottomBar.frame.height
+            }
         }
         else {
             view.frame.origin.y = 0.0
         }
     }
-    
-    func getKeyboardRect(_ notification: Notification) -> CGRect {
+    func getKeyboardHeight( _ notification: Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![ UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.cgRectValue
+        return keyboardSize.cgRectValue.height
     }
 }
 

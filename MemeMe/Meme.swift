@@ -16,9 +16,3 @@ struct Meme
     var originalImage: UIImage?
     var memedImage: UIImage?
 }
-extension Meme
-{
-    init( originalImage: UIImage? ) {
-        self.originalImage = originalImage
-    }
-}
