@@ -271,19 +271,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                                   object: nil)
     }
     
-//    @objc func adjustForKeyboard( _ notification: Notification ) {
-//        
-//        let userInfo = notification.userInfo
-//        let keyboardSize = userInfo![ UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-//
-//        let keyboardScreenEndFrame = keyboardSize.cgRectValue
-//        let keyboardViewEndFrame = view.convert( keyboardScreenEndFrame, from: view.window )
-//        
-//        if notification.name == UIResponder.keyboardWillHideNotification {
-//            
-//        }
-//    }
-
     @objc func keyboardWillShowOrHide( _ notification: Notification ) {
 
         guard let activeTextField = activeTextField else {
