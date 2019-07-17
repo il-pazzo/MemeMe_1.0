@@ -197,8 +197,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if let selectedImage = info[.originalImage] as? UIImage {
             imageView.image = selectedImage
             updateMemeBody()
-            topTextField.text = defaultTextTop
-            bottomTextField.text = defaultTextBottom
+            
+            // seems to work nicer with text-in-progress left alone; clear only on Cancel
+//            topTextField.text = defaultTextTop
+//            bottomTextField.text = defaultTextBottom
         }
         
         updateTopBarButtons()
