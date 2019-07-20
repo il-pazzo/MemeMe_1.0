@@ -129,7 +129,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                                       preferredStyle: .alert)
         
         let discardAction = UIAlertAction(title: "Discard", style: .default) { _ in
-            self.discardWorkInProgress()
+//            self.discardWorkInProgress()
+            self.returnToParent()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
@@ -137,6 +138,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         alert.addAction( cancelAction )
         
         present( alert, animated: true )
+    }
+    private func returnToParent() {
+        dismiss(animated: true, completion: nil)
     }
     private func discardWorkInProgress() {
         
@@ -173,6 +177,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                     bottomText: bottomTextField.text,
                     originalImage: imageView.image,
                     memedImage: memedImage)
+        
+        saveMeme( meme! )
+        
+        //TODO: consider changing Cancel to Done, allowing other sharing operations...
+        //TODO: ...but would require tracking what was saved, to prevent duplicates
+        returnToParent()
+    }
+    
+    func saveMeme( _ meme: Meme ) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append( meme )
     }
     
     private func getMemedImage() -> UIImage {

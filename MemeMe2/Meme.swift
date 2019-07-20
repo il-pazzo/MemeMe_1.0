@@ -16,3 +16,11 @@ struct Meme
     var originalImage: UIImage?
     var memedImage: UIImage?
 }
+
+extension Meme: CustomStringConvertible
+{
+    var description: String {
+        return "top=\(topText ?? "-"), bot=\(bottomText ?? "-"), origImage=\(originalImage == nil ? "-" : "present"), memeImage=\(memedImage == nil ? "-" : "present")"
+    }
+}
+
