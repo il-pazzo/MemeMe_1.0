@@ -61,7 +61,6 @@ extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
         let memeIndex = (indexPath as NSIndexPath).row
         let meme = self.memes[memeIndex]
-        print( "cfia row \(memeIndex) = \(meme)" )
 
         // Set the name and image
         cell.textLabel?.text = "\(meme.topText ?? "")…\(meme.bottomText ?? "")"
