@@ -67,4 +67,15 @@ extension MemeCollectionViewController: UICollectionViewDataSource, UICollection
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let memeIndex = (indexPath as NSIndexPath).row
+        let meme = self.memes[memeIndex]
+        
+        let vc = MemeDetailViewController.instantiate() as! MemeDetailViewController
+        
+        vc.meme = meme
+        
+        self.navigationController?.pushViewController( vc, animated: true )
+    }
 }

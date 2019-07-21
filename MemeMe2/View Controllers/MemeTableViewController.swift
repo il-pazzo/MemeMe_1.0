@@ -26,18 +26,6 @@ class MemeTableViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension MemeTableViewController {
@@ -67,5 +55,17 @@ extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {
         cell.imageView?.image = meme.originalImage
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let memeIndex = (indexPath as NSIndexPath).row
+        let meme = self.memes[memeIndex]
+        
+        let vc = MemeDetailViewController.instantiate() as! MemeDetailViewController
+        
+        vc.meme = meme
+        
+        self.navigationController?.pushViewController( vc, animated: true )
     }
 }
