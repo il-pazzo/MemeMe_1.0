@@ -328,7 +328,7 @@
         <scene sceneID="ccI-KZ-cjM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z7V-t7-fg2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="tPc-6o-lzi"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="tPc-6o-lzi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Wl-XV-G5w">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -347,7 +347,7 @@
         <scene sceneID="Z9Y-aY-yH0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iu9-La-Q5k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="7Lh-s3-eM4"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table" id="7Lh-s3-eM4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fjH-CP-Efw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -382,4 +382,8 @@
             <point key="canvasLocation" x="-646.37681159420299" y="214.28571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30.5"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
 </document>
