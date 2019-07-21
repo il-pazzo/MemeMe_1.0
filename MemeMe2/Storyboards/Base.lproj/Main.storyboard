@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJL-jN-3v6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJL-jN-3v6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemeTableViewCell" textLabel="BSB-vy-PoI" rowHeight="100" style="IBUITableViewCellStyleDefault" id="XkX-fd-RB1">
@@ -48,6 +47,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JJL-jN-3v6" firstAttribute="leading" secondItem="pcU-SY-jm7" secondAttribute="leading" id="I49-6j-CtU"/>
+                            <constraint firstItem="JJL-jN-3v6" firstAttribute="trailing" secondItem="pcU-SY-jm7" secondAttribute="trailing" id="WNn-rc-dav"/>
+                            <constraint firstItem="JJL-jN-3v6" firstAttribute="top" secondItem="jtv-Vy-Ght" secondAttribute="topMargin" id="XH7-Tm-kbw"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="JJL-jN-3v6" secondAttribute="bottom" id="ewE-vx-0Rt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pcU-SY-jm7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Saved Memes" id="oO5-Fo-Ug5"/>
@@ -67,9 +72,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-5d-QGS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-5d-QGS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="lz9-5V-Fyi"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pZa-IU-2tZ">
@@ -136,11 +140,18 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i6d-5d-QGS" firstAttribute="trailing" secondItem="i5G-KU-Kyn" secondAttribute="trailing" id="5Mc-lC-5Yz"/>
+                            <constraint firstItem="i6d-5d-QGS" firstAttribute="leading" secondItem="i5G-KU-Kyn" secondAttribute="leading" id="nHC-MP-4N8"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="i6d-5d-QGS" secondAttribute="bottom" id="vcq-49-MCP"/>
+                            <constraint firstItem="i6d-5d-QGS" firstAttribute="top" secondItem="0yn-X6-OB6" secondAttribute="topMargin" id="y44-80-oO2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="i5G-KU-Kyn"/>
                     </view>
                     <navigationItem key="navigationItem" title="Saved Memes" id="abW-F8-sMv"/>
                     <connections>
                         <outlet property="collectionView" destination="i6d-5d-QGS" id="cCx-f4-Yrg"/>
+                        <outlet property="flowLayout" destination="pZa-IU-2tZ" id="5zn-Tz-6mV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39q-Xl-NMs" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ import UIKit
 class MemeCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes : [Meme]! {
         return (UIApplication.shared.delegate as! AppDelegate).memes
@@ -27,6 +28,24 @@ class MemeCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createMeme))
+        
+        configureFlowLayout()
+    }
+    private func configureFlowLayout() {
+        
+        let spacing: CGFloat = 3.0
+        flowLayout.minimumLineSpacing = spacing
+        flowLayout.minimumInteritemSpacing = spacing
+        
+        let preferredSize: CGFloat = 100.0
+        let hNumItems = CGFloat( Int((view.frame.size.width - spacing) / preferredSize))
+        let vNumItems = CGFloat( Int((view.frame.size.height - spacing) / preferredSize))
+        
+        let hItemSize = CGFloat( Int(view.frame.size.width / hNumItems))
+        let vItemSize = CGFloat( Int(view.frame.size.height / vNumItems))
+        
+        let bestItemSize = hItemSize < vItemSize ? hItemSize : vItemSize
+        flowLayout.itemSize = CGSize( width: bestItemSize, height: bestItemSize )
     }
     
     override func viewWillAppear(_ animated: Bool) {
