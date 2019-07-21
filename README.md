@@ -1,7 +1,8 @@
 # MemeMe_2.0
 
-An attempt at Udacity's MemeMe 2.0 project, with a few extras:
+An attempt at Udacity's MemeMe 2.0 project, with one extra:
 
-1. Instructions rather than just "Top/Bottom" text for the welcome screen
-2. An alert when hitting Cancel to give the user a chance to change their mind instead of aggressively discarding the work
-3. Highlighting the area where text is to be entered so it's easier to see
+1. Add action button on detail screen to allow for multiple actions.
+   (That is, if one wants to save the meme to their photo library
+   AND text it AND email it, they would otherwise be out of luck
+   since the meme editor allows exactly one action before bailing.)
