@@ -22,24 +22,25 @@ class MemeCollectionViewController: UIViewController {
         NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name:"HelveticaNeue-CondensedBlack", size:12)!,
     ]
-    
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createMeme))
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+extension MemeCollectionViewController {
+    @objc func createMeme() {
+        let editorViewController = MemeEditorViewController.instantiate() as! MemeEditorViewController
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        present(editorViewController, animated: true)
     }
-    */
-
 }
 
 extension MemeCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {

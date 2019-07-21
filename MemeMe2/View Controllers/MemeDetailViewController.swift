@@ -14,10 +14,30 @@ class MemeDetailViewController: UIViewController {
     
     var meme: Meme!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         memeImageView?.image = meme.memedImage
+        
+        if meme.memedImage != nil {
+            let activityBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showActivityViewController(_:)))
+            
+            navigationItem.rightBarButtonItem = activityBarButtonItem
+        }
+    }
+}
+
+extension MemeDetailViewController {
+    
+    @objc func showActivityViewController( _ sender: UIButton ) {
+        
+        guard let memedImage = meme.memedImage else {
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        vc.completionWithItemsHandler = nil
+        
+        present( vc, animated: true, completion: nil )
     }
 }

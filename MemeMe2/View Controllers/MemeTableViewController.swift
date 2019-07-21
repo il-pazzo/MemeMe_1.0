@@ -15,7 +15,7 @@ class MemeTableViewController: UIViewController {
     var memes : [Meme]! {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,9 +30,8 @@ class MemeTableViewController: UIViewController {
 
 extension MemeTableViewController {
     @objc func createMeme() {
-        let editorViewController = UIStoryboard( name: "Main", bundle: Bundle.main ).instantiateViewController( withIdentifier: "MemeEditorViewController" ) as! MemeEditorViewController
+        let editorViewController = MemeEditorViewController.instantiate() as! MemeEditorViewController
         
-//        self.navigationController?.pushViewController(editorViewController, animated: true)
         present(editorViewController, animated: true)
     }
 }
@@ -40,7 +39,6 @@ extension MemeTableViewController {
 extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print( "tableview returning count \(memes.count)" )
         return memes.count
     }
     

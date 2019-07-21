@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pf-ex-8ru" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173.913043478261" y="-115.17857142857142"/>
+            <point key="canvasLocation" x="1187" y="-115"/>
         </scene>
         <!--Saved Memes-->
         <scene sceneID="pRt-TO-cFd">
