@@ -32,8 +32,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: - Properties
     
     var activeTextField: UITextField?
-    let defaultTextTop = "Top"
-    let defaultTextBottom = "Bottom"
+    let defaultTextTop = "TOP"
+    let defaultTextBottom = "BOTTOM"
     
     let textAlphaWhenShowing: CGFloat = 1.0
     let textAlpheWhenEntering: CGFloat = 0.7
