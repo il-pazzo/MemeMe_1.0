@@ -44,13 +44,13 @@ extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         let memeIndex = (indexPath as NSIndexPath).row
         let meme = self.memes[memeIndex]
 
         // Set the name and image
-        cell.textLabel?.text = "\(meme.topText ?? "")…\(meme.bottomText ?? "")"
-        cell.imageView?.image = meme.originalImage
+        cell.memeTextLabel?.text = "\(meme.topText ?? "")…\(meme.bottomText ?? "")"
+        cell.memeImageView?.image = meme.originalImage
         
         return cell
     }
